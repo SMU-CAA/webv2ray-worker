@@ -1,0 +1,7 @@
+name = "webv2ray"
+main = "src/index.ts"
+compatibility_date = "2023-03-25"
+kv_namespaces = [{ binding = "WEBV2RAY", preview_id = "", id = "" }]
+
+[env.production]
+kv_namespaces = [{ binding = "WEBV2RAY", id = "" }]
