@@ -26,26 +26,26 @@ export default {
       const userToken = await env.WEBV2RAY.get('user_token');
       if (token === userToken) {
         const ticket = await env.WEBV2RAY.get('vpn_ticket');
-				const uuid = await env.WEBV2RAY.get('v2ray_uuid');
-				const path = await env.WEBV2RAY.get('v2ray_path');
+        const uuid = await env.WEBV2RAY.get('v2ray_uuid');
+        const path = await env.WEBV2RAY.get('v2ray_path');
         const res = `
 proxies:
-	- name: China WebVPN@Lab
-		type: vmess
-		server: webvpn.shmtu.edu.cn
-		port: 443
-		uuid: ${uuid}
-		alterId: 0
-		cipher: auto
-		network: ws
-		ws-opts:
-			path: ${path}
-			headers:
-				Host: webvpn.shmtu.edu.cn
-				Cookie: 'wengine_vpn_ticket=${ticket}; refresh=1;'
-		tls: true
-		skip-cert-verify: true
-		udp: true
+  - name: China WebVPN@Lab
+    type: vmess
+    server: webvpn.shmtu.edu.cn
+    port: 443
+    uuid: ${uuid}
+    alterId: 0
+    cipher: auto
+    network: ws
+    ws-opts:
+      path: ${path}
+      headers:
+        Host: webvpn.shmtu.edu.cn
+        Cookie: 'wengine_vpn_ticket=${ticket}; refresh=1;'
+    tls: true
+    skip-cert-verify: true
+    udp: true
 `;
         return new Response(res, {
           headers: {
